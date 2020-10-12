@@ -1,0 +1,8 @@
+{"namespace": "com.example.domain",
+  "type": "record",
+  "name": "EventMessage",
+  "fields": [
+      {"name": "msgId", "type": "string"},
+      {"name": "desc", "type": "string"}
+  ]
+}

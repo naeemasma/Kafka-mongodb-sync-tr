@@ -1,0 +1,40 @@
+db.createCollection("eventMessage", {
+  validator: {
+    $jsonSchema: {
+      required: [ "msgId", "desc" ],
+      properties: {
+        msgId: {
+          bsonType: "string",
+          description: "must be a int and is required"
+        },desc: {
+          bsonType: "string",
+          description: "must be a string and is required"
+        }
+      }
+    }
+  }
+})
+
+db.createCollection("eventMessageDetail", {
+  validator: {
+    $jsonSchema: {
+      required: [ "msgId", "contact" ],
+      properties: {
+        msgId: {
+          bsonType: "string",
+          description: "must be a int and is required"
+        },
+        contact: {
+          bsonType: "string",
+          pattern: "^.+\@.+$",
+          description: "must be a valid email and is required"
+        }
+      }
+    }
+  }
+})
+
+db.eventMessage.insertOne({ msgId: "11", desc:"desc" })
+db.eventMessageDetail.insertOne({ msgId: "11", contact: "a@b.com" })
+ 
+   
